@@ -60,6 +60,18 @@ print(f"Greatest Decrease in Profits: {Months[MaxDecreaseIndex]} (${(MaxDecrease
 #set path for Analysis file
 output_path = 'Output.txt'
 
+#open the output path
+with open(output_path, "w") as file:
+    #write analysis to the output file
+    file.write("Financial Analysis\n")
+    file.write("======================================\n")
+    file.write(f"Total Months: {Counter}\n")
+    file.write(f"Total Profits: ${int(sum(Profits))}\n")
+    file.write(f"Average Change: ${round(ProfitDeltaTotal/(Counter - 1),2)}\n")
+    file.write(f"Greatest Increase in Profits: {Months[MaxIncreaseIndex]} (${(MaxIncrease):.2f})\n")
+    file.write(f"Greatest Decrease in Profits: {Months[MaxDecreaseIndex]} (${(MaxDecrease):.2f})\n")
+    
+
 
 
 
