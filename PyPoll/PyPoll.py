@@ -44,7 +44,7 @@ with open (csvpath, "r") as csvfile:
 
     #read through the data and start tallying votes per candidate
     for Candidate in UniqueCandidates:
-        Candidates.append(Votes.count(Candidates))  
+        Candidates.append(Votes.count(Candidate))  
         TotalPercent.append(round(Votes.count(Candidate)/TotalVotes*100,3))  
 
     #Return who has the most votes
@@ -52,7 +52,7 @@ with open (csvpath, "r") as csvfile:
 
     #print summary
     print("Election Results")
-    print("==========================")  
+    print("==========================")
     print(f"Total Votes: {TotalVotes}") 
     print("==========================")
     for x in range(len(UniqueCandidates)):
@@ -60,6 +60,25 @@ with open (csvpath, "r") as csvfile:
     print("==========================")
     print(f"Winner: {Winner}")   
     print("==========================") 
+
+
+    #set path for Analysis file
+    output_path = 'Output.txt'
+
+    #open the output path
+    with open(output_path, "w") as file:
+    #write analysis to the output file
+        file.write("Election Results")
+        file.write("\n==========================")
+        file.write(f"\nTotal Votes: {TotalVotes}")
+        file.write("\n==========================")
+        for x in range(len(UniqueCandidates)):
+            file.write(f"\n{UniqueCandidates[x]}: {TotalPercent[x]}% {Candidates[x]}")
+        file.write("\n==========================")
+        file.write(f"\nWinner: {Winner}") 
+        file.write("\n==========================")
+    
+    
 
 
 
